@@ -36,143 +36,6 @@ import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import BatteryCharging30OutlinedIcon from "@mui/icons-material/BatteryCharging30Outlined";
 import TwoWheelerOutlinedIcon from "@mui/icons-material/TwoWheelerOutlined";
 import MonitorHeartOutlinedIcon from "@mui/icons-material/MonitorHeartOutlined";
-// function Dashboard() {
-//   const { sales, tasks } = reportsLineChartData;
-//   const [eve1Data, setEve1Data] = useState({ totalCycles: 0 });
-//   const [eve2Data, setEve2Data] = useState({ totalCycles: 0, totalSpikes: 0 });
-//   const [chartData, setChartData] = useState({
-//     labels: [],
-//     datasets: [{
-//       label: "Cell Difference",
-//       data: [],
-//     }]
-//   });
-//   useEffect(() => {
-//     fetch("http://localhost:5000/eve1")
-//       .then((response) => {
-//         return response.json();
-//       })
-//       .then((data) => {
-//         setEve1Data({ totalCycles: data.eve1_total_cycles });
-//       })
-//       .catch((error) => console.error("Error fetching eve1 data:", error));
-//     fetch("http://localhost:5000/eve2")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setEve2Data({ totalCycles: data.eve2_total_cycles, totalSpikes: data.eve2_total_spikes });
-//       })
-//       .catch((error) => console.error("Error fetching eve2 data:", error));
-//     fetch("http://localhost:5000/eve2_cell_diff")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         const cycleNumbers = data.map((entry) => entry["Cycle Number"]);
-//         const cellDifferences = data.map((entry) => entry["Cell Difference"]);
-//         setChartData({
-//           labels: cycleNumbers,
-//           datasets: [{
-//             label: "Cell Difference",
-//             data: cellDifferences,
-//             fill: false,
-//             borderColor: "rgb(75, 192, 192)",
-//             tension: 0.1
-//           }]
-//         });
-//       })
-//       .catch((error) => console.error("Error fetching data:", error));
-//   }, []);
-//   return (
-//     <DashboardLayout>
-//       <DashboardNavbar />
-//       <MDBox py={3}>
-//         <Grid container spacing={3}>
-//           <Grid item xs={12} md={6} lg={3}>
-//             <MDBox mb={1.5}>
-//               <ComplexStatisticsCard
-//                 color="dark"
-//                 icon={<BatteryCharging30OutlinedIcon />}
-//                 title="Total Batteries Analysed"
-//                 count={2}
-//               />
-//             </MDBox>
-//           </Grid>
-//           <Grid item xs={12} md={6} lg={3}>
-//             <MDBox mb={1.5}>
-//               <ComplexStatisticsCard
-//                 icon={<TwoWheelerOutlinedIcon />}
-//                 title="EVE1 - Total Cycles"
-//                 count={/* prettier-ignore */ eve1Data.totalCycles}
-//               />
-//             </MDBox>
-//           </Grid>
-//           <Grid item xs={12} md={6} lg={3}>
-//             <MDBox mb={1.5}>
-//               <ComplexStatisticsCard
-//                 color="success"
-//                 icon={<TwoWheelerOutlinedIcon />}
-//                 title="EVE2 - Total Cycles"
-//                 count={/* prettier-ignore */ eve2Data.totalCycles}
-//               />
-//             </MDBox>
-//           </Grid>
-//           <Grid item xs={12} md={6} lg={3}>
-//             <MDBox mb={1.5}>
-//               <ComplexStatisticsCard
-//                 color="primary"
-//                 icon={<MonitorHeartOutlinedIcon />}
-//                 title="EVE2 - Total Spikes"
-//                 count={/* prettier-ignore */ eve2Data.totalSpikes}
-//               />
-//             </MDBox>
-//           </Grid>
-//         </Grid>
-//         <MDBox mt={4.5}>
-//           <Grid container spacing={3}>
-//             <Grid item xs={12} md={6} lg={4}>
-//               <MDBox mb={3}>
-//                 <ReportsBarChart
-//                   color="info"
-//                   title="website views"
-//                   description="Last Campaign Performance"
-//                   date="campaign sent 2 days ago"
-//                   chart={reportsBarChartData}
-//                 />
-//               </MDBox>
-//             </Grid>
-//             <Grid item xs={12} md={6} lg={4}>
-//               <MDBox mb={3}>
-//                 <ReportsLineChart
-//                   color="success"
-//                   title="daily sales"
-//                   description={
-//                     <>
-//                       (<strong>+15%</strong>) increase in today sales.
-//                     </>
-//                   }
-//                   date="updated 4 min ago"
-//                   chart={chartData}
-//                 />
-//               </MDBox>
-//             </Grid>
-//             <Grid item xs={12} md={6} lg={4}>
-//               <MDBox mb={3}>
-//                 <ReportsLineChart
-//                   color="dark"
-//                   title="completed tasks"
-//                   description="Last Campaign Performance"
-//                   date="just updated"
-//                   chart={tasks}
-//                 />
-//               </MDBox>
-//             </Grid>
-//           </Grid>
-//         </MDBox>
-//       </MDBox>
-//       <Footer />
-//     </DashboardLayout>
-//   );
-// }
-
-// export default Dashboard;
 
 function DashboardEVE2() {
   const { sales, tasks } = reportsLineChartData;
@@ -181,27 +44,27 @@ function DashboardEVE2() {
   const [imageSrc1, setImageSrc1] = useState("");
   const [imageSrc2, setImageSrc2] = useState("");
   useEffect(() => {
-    fetch("http://localhost:5000/eve1")
+    fetch("http://btcbe.auf-quant.nedncl.com/eve1")
       .then((response) => response.json())
       .then((data) => {
         setEve1Data({ totalCycles: data.eve1_total_cycles });
       })
       .catch((error) => console.error("Error fetching eve1 data:", error));
 
-    fetch("http://localhost:5000/eve2")
+    fetch("http://btcbe.auf-quant.nedncl.com/eve2")
       .then((response) => response.json())
       .then((data) => {
         setEve2Data({ totalCycles: data.eve2_total_cycles, totalSpikes: data.eve2_total_spikes });
       })
       .catch((error) => console.error("Error fetching eve2 data:", error));
-    fetch("http://localhost:5000/compare")
+    fetch("http://btcbe.auf-quant.nedncl.com/compare")
       .then((response) => response.blob())
       .then((blob) => {
         const url = URL.createObjectURL(blob);
         setImageSrc1(url);
       })
       .catch((error) => console.error("Error fetching graph:", error));
-    fetch("http://localhost:5000/eve2_cell_diff")
+    fetch("http://btcbe.auf-quant.nedncl.com/eve2_cell_diff")
       .then((response) => response.blob())
       .then((blob) => {
         const url = URL.createObjectURL(blob);

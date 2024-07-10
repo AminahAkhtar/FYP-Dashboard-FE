@@ -118,7 +118,7 @@ function Tables() {
   const [eve2Data, setEve2Data] = useState({ columns: [], rows: [] });
   const [batteryHealthData, setBatteryHealthData] = useState({ columns: [], rows: [] });
   useEffect(() => {
-    fetch("http://localhost:5000/eve1_data")
+    fetch("http://btcbe.auf-quant.nedncl.com/eve1_data")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -193,7 +193,7 @@ function Tables() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/eve2_data")
+    fetch("http://btcbe.auf-quant.nedncl.com/eve2_data")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -268,7 +268,7 @@ function Tables() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/data_compare")
+    fetch("http://btcbe.auf-quant.nedncl.com/data_compare")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
