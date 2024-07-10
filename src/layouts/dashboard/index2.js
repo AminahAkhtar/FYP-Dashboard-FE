@@ -44,27 +44,27 @@ function DashboardEVE2() {
   const [imageSrc1, setImageSrc1] = useState("");
   const [imageSrc2, setImageSrc2] = useState("");
   useEffect(() => {
-    fetch("http://btcbe.auf-quant.nedncl.com/eve1")
+    fetch("https://btcbe.auf-quant.nedncl.com/eve1")
       .then((response) => response.json())
       .then((data) => {
         setEve1Data({ totalCycles: data.eve1_total_cycles });
       })
       .catch((error) => console.error("Error fetching eve1 data:", error));
 
-    fetch("http://btcbe.auf-quant.nedncl.com/eve2")
+    fetch("https://btcbe.auf-quant.nedncl.com/eve2")
       .then((response) => response.json())
       .then((data) => {
         setEve2Data({ totalCycles: data.eve2_total_cycles, totalSpikes: data.eve2_total_spikes });
       })
       .catch((error) => console.error("Error fetching eve2 data:", error));
-    fetch("http://btcbe.auf-quant.nedncl.com/compare")
+    fetch("https://btcbe.auf-quant.nedncl.com/compare")
       .then((response) => response.blob())
       .then((blob) => {
         const url = URL.createObjectURL(blob);
         setImageSrc1(url);
       })
       .catch((error) => console.error("Error fetching graph:", error));
-    fetch("http://btcbe.auf-quant.nedncl.com/eve2_cell_diff")
+    fetch("https://btcbe.auf-quant.nedncl.com/eve2_cell_diff")
       .then((response) => response.blob())
       .then((blob) => {
         const url = URL.createObjectURL(blob);
